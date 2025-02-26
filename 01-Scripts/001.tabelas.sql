@@ -76,48 +76,99 @@ CREATE TABLE VENDEDOR(
     FOREIGN KEY (ID_REGIAO) REFERENCES REGIAO(ID_REGIAO)
 )
 
+CREATE TABLE AUTOR(
+    ID_AUTOR INT IDENTITY (1,1) PRIMARY KEY,
+    AUTOR VARCHAR(100),
+    SEXO CHAR(1),
+    FORMACAO VARCHAR(100),
+    NASCIMENTO DATE,   
+)
+
+
+CREATE TABLE EDITORA (
+    ID_EDITORA INT IDENTITY (1,1) PRIMARY KEY,
+    EDITORA VARCHAR(100),
+    ENDERECO VARCHAR(100),
+    NUMERO VARCHAR (30),
+    BAIRRO VARCHAR(100),
+    CEP CHAR(8),
+    TEL1 VARCHAR(30),
+    TEL2 VARCHAR(30),
+    EMAIL VARCHAR (100),
+    ID_REGIAO INT,
+    FOREIGN KEY (ID_REGIAO) REFERENCES REGIAO(ID_REGIAO) 
+)
+
+
+ELECT * FROM VENDEDOR;
+
+
+/*Alias Colunas*/
+SELECT ENDERECO AS LOGRADOURO, CPF, EMAIL FROM CLIENTE;
+
+/*CARACTER CORINGA % -> QUALQUER COISA*/
+SELECT BAIRRO FROM CLIENTE
+WHERE BAIRRO LIKE '%a'
+
+/*Alias Colunas*/
+SELECT ENDERECO AS LOGRADOURO, CPF, EMAIL FROM CLIENTE;
+
+SELECT * FROM CLIENTE WHERE SEXO='F'
+/* 1 - Trazer todos os dados*/
+SELECT * FROM LIVRO
+/* 2 - Trazer o nome do livro e o nome da editora*/
+SELECT LIVRO, EDITORA FROM LIVRO
+/* 3 - Trazer o nome do livro e a UF dos livros publicados por autores do sexo masculino */
+SELECT LIVRO, UF, SEXO FROM LIVRO WHERE SEXO='M'
+/* 4 - Trazer o nome do livro e o número de páginas dos livros publicados por autores do sexo femino*/
+SELECT LIVRO, PAGINAS, AUTOR, SEXO FROM LIVRO WHERE SEXO='F'
+/* 5 - Trazer os valores dos livros das editiras de São Paulo*/
+SELECT LIVRO, VALOR FROM LIVRO
+/* 6 - Trazer os dados dos autores do sexo masculino que tiveram livros publicados por São Paulo
+ou Rio de Janeiro (Questão Desafio)*/
+SELECT AUTOR, SEXO FROM LIVRO --OR -> Para que a saida da query seja verdadeira, basta que apenas uma condicção seja verdadeira
+WHERE SEXO='M' AND (UF='SP' OR UF='RJ'); --AND -> Para que a saída seja verdadeira todas as condições precisam ser verdadeiras.
+
+
+/* OR - OU */
+SELECT * FROM CLIENTE
+
+SELECT NOME, SEXO, ENDERECO FROM CLIENTE
+WHERE SEXO = 'M' OR ENDERECO LIKE '%RJ';
+
+/* AND - E */
+SELECT NOME, SEXO, ENDERECO FROM CLIENTE
+WHERE SEXO = 'M' AND ENDERECO LIKE 'RJ';
 
 
 
-/*-------------------------------------------------------------------------*/
-
-/*INSERIR DADOS NA TABELA DE CLIENTE*/
-
-INSERT INTO CLIENTE (ID, NOME, SEXO, EMAIL, CPF, TELEFONE, ENDERECO)
-VALUES 
-(2,'Amanda', 'F', 'mand_09@hotmail.com', 85746327943, 85977746533, 'Av: Joaquim Tavora'),
-(3,'Fernando', 'M', 'ferd-87@gmail.com', 32516743298, 85987546322, 'Rua: 658'),
-(4,'João', 'M', 'jovini_22@hotmail.com', 12658436798, 85977643412, 'Rua: Tenente Almeida'),
-(5,'Ana', 'F', 'anaselve@gmail.com',     96323567843, 85986945732, 'Rua: 834');
-
-/*INSERIR DADOS NA TABELA DE LIVRO*/
-
-INSERT INTO LIVRO(LIVRO,AUTOR,SEXO,PAGINAS,EDITORA,VALOR,UF,ANO)
-VALUES ('O poder da Mente', 'Clara Mafra', 'F', 120, 'Continental', 56, 'SP', '2017/02/04');
-
-/*INSERIR DADOS NA TABELA DE FUNCIONARIO*/
-
-INSERT INTO FUNCIONARIO (NOME, SEXO, EMAIL,  ADMISSAO, SALARIO, ID_CARGO, ID_REGIAO, ID_DEPARTAMENTO)
-VALUES ('Ana Leticia Maia', 'Feminino', 'anelet@hotmail.com', '2023/02/01', 5700.00, 2, 11, 3)
+-- OR traz todo mundo com pelo menos uma das duas condições
+-- AND Traz apenas o rREGIAO
 
 
-/*INSERIR DADOS NA TABELA DE DEPARTAMENTO*/
-
-INSERT INTO DEPARTAMENTO (NOME, SALA) VALUES ('Financeiro','6'), ('Tesouraria','2'), ('Recepção','null'), ('Direção','1');
-
-
-/*INSERIR DADOS NA TABELA VENDEDOR*/
-
-
-INSERT INTO VENDEDOR VALUES ('Alfredo Tavares','M', 'Rua 432', 200, 60122233, 'Conjunto-Ceará', 85988557633, null, 'alftv@hotmail.com',5);
-INSERT INTO VENDEDOR VALUES ('João Abides','M', 'Av. Dom Luis', 3000, 60555677, 'Aldeota', 85999976543, null, 'joab@gmail.com',5);
-INSERT INTO VENDEDOR VALUES ('Kaio Manfra','M', 'Av. Dom Quitino', 345, 597643154, 'Sapiranga', 85988764533, null, 'kkoit@gmail.com',5);
-INSERT INTO VENDEDOR VALUES ('Viviane Martins Souza', 'F', 'RUA. Joaquim Nambuco', 248, 60766344, 'Meireles', null, 85988976544, 'vivim@hotmail.com', 10)
+/*Junção de tabelas CLIENTE E REGIAO*/
+SELECT C.ID_CLIENTE, C.NOME, C.SEXO, R.ESTADO
+FROM CLIENTE C 
+INNER JOIN REGIAO R  
+ON C.ID_REGIAO = R.ID_REGIAO
+WHERE C.SEXO = 'F' AND R.ESTADO LIKE 'M%';
 
 
-/*INSERIR DADOS NA TABELA CARGO*/
+/*Comandos COMMIT E ROLLBACK*/
+SELECT * FROM CLIENTE
+WHERE NOME = 'LIVIA'
+AND sexo = 'F'
 
-INSERT INTO CARGO VALUES ('Júnior')
+
+
+/*WHERE = SELEÇÃO*/
+
+
+/*Criando POROCEDURE para inserir dados na tabela departamento*/
+SELECT * FROM DEPARTAMENTO;
+
+SELECT * FROM CLIENTE
+WHERE ID_CLIENTE IN (3,5,6,7);
 
 /*-------------------------------------------------------------------------*/
 
