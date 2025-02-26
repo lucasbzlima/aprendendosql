@@ -109,12 +109,13 @@ INSERT INTO DEPARTAMENTO (NOME, SALA) VALUES ('Financeiro','6'), ('Tesouraria','
 /*INSERIR DADOS NA TABELA VENDEDOR*/
 
 
-INSERT INTO VENDEDOR (NOME, SEXO, ENDERECO, NUMERO, CEP, BAIRRO, TEL1, TEL2, EMAIL, ID_REGIAO)
-VALUES ('Alfredo Tavares','M', 'Rua 432', 200, 60122233, 'Conjunto-Ceará', 85988557633, null, 'alftv@hotmail.com',5);
-INSERT INTO VENDEDOR (NOME, SEXO, ENDERECO, NUMERO, CEP, BAIRRO, TEL1, TEL2, EMAIL, ID_REGIAO)
-VALUES ('João Abides','M', 'Av. Dom Luis', 3000, 60555677, 'Aldeota', 85999976543, null, 'joab@gmail.com',5);
-INSERT INTO VENDEDOR (NOME, SEXO, ENDERECO, NUMERO, CEP, BAIRRO, TEL1, TEL2, EMAIL, ID_REGIAO)
-VALUES ('Kaio Manfra','M', 'Av. Dom Quitino', 345, 597643154, 'Sapiranga', 85988764533, null, 'kkoit@gmail.com',5);
+INSERT INTO VENDEDOR VALUES ('Alfredo Tavares','M', 'Rua 432', 200, 60122233, 'Conjunto-Ceará', 85988557633, null, 'alftv@hotmail.com',5);
+INSERT INTO VENDEDOR VALUES ('João Abides','M', 'Av. Dom Luis', 3000, 60555677, 'Aldeota', 85999976543, null, 'joab@gmail.com',5);
+INSERT INTO VENDEDOR VALUES ('Kaio Manfra','M', 'Av. Dom Quitino', 345, 597643154, 'Sapiranga', 85988764533, null, 'kkoit@gmail.com',5);
+INSERT INTO VENDEDOR VALUES ('Viviane Martins Souza', 'F', 'RUA. Joaquim Nambuco', 248, 60766344, 'Meireles', null, 85988976544, 'vivim@hotmail.com', 10)
+
+
+/*INSERIR DADOS NA TABELA CARGO*/
 
 INSERT INTO CARGO VALUES ('Júnior')
 
