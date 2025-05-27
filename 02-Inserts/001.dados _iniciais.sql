@@ -21,7 +21,7 @@ INSERT INTO VENDEDOR VALUES ('Alfredo Tavares','M', 'Rua 432', 200, 60122233, 'C
 INSERT INTO VENDEDOR VALUES ('João Abides','M', 'Av. Dom Luis', 3000, 60555677, 'Aldeota', 85999976543, null, 'joab@gmail.com',5);
 INSERT INTO VENDEDOR VALUES ('Kaio Manfra','M', 'Av. Dom Quitino', 345, 597643154, 'Sapiranga', 85988764533, null, 'kkoit@gmail.com',5);
 INSERT INTO VENDEDOR VALUES ('Viviane Martins Souza', 'F', 'RUA. Joaquim Nambuco', 248, 60766344, 'Meireles', null, 85988976544, 'vivim@hotmail.com', 10)
-
+INSERT INTO VENDEDOR VALUES ('Júnior Soares','M', 'Av Santos Dumont', 3000, 590438199, 'Aldeota', 85988556635, null, 'jsm@gmail.com',5);
 
 /*INSERIR DADOS NA TABELA CARGO*/
 
